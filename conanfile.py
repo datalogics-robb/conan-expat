@@ -68,4 +68,6 @@ class ExpatConan(ConanFile):
             self.cpp_info.defines = ["XML_STATIC"]
 
     def configure(self):
+        if self.settings.compiler == 'Visual Studio':
+            self.options.static_crt = (self.settings.compiler.runtime in ["MT", "MTd"])
         del self.settings.compiler.libcxx
