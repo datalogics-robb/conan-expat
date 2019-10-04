@@ -36,14 +36,14 @@ class ExpatConan(ConanFile):
 
         cmake = CMake(self)
 
-        cmake_args = { "BUILD_doc" : "OFF",
-                       "BUILD_examples" : "OFF",
-                       "BUILD_shared" : self.options.shared,
-                       "BUILD_tests" : "OFF",
-                       "BUILD_tools" : "OFF",
+        cmake_args = { "EXPAT_BUILD_DOCS" : "OFF",
+                       "EXPAT_BUILD_EXAMPLES" : "OFF",
+                       "EXPAT_SHARED_LIBS" : self.options.shared,
+                       "EXPAT_BUILD_TESTS" : "OFF",
+                       "EXPAT_BUILD_TOOLS" : "OFF",
                        "CMAKE_POSITION_INDEPENDENT_CODE": "ON",
                        "CMAKE_DEBUG_POSTFIX": "",
-                       "MSVC_USE_STATIC_CRT": self.options.static_crt,
+                       "EXPAT_MSVC_STATIC_CRT": self.options.static_crt,
                      }
 
         cmake.configure(source_dir="../libexpat/expat", build_dir="build", defs=cmake_args)
