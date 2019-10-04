@@ -42,8 +42,12 @@ class ExpatConan(ConanFile):
                        "EXPAT_BUILD_TESTS" : "OFF",
                        "EXPAT_BUILD_TOOLS" : "OFF",
                        "CMAKE_POSITION_INDEPENDENT_CODE": "ON",
-                       "CMAKE_DEBUG_POSTFIX": "",
                        "EXPAT_MSVC_STATIC_CRT": self.options.static_crt,
+                       "CMAKE_DEBUG_POSTFIX": "",
+                       "CMAKE_RELEASE_POSTFIX": "",
+                       "CMAKE_MINSIZEREL_POSTFIX": "",
+                       "CMAKE_RELWITHDEBINFO_POSTFIX": "",
+  
                      }
 
         cmake.configure(source_dir="../libexpat/expat", build_dir="build", defs=cmake_args)

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.1.3)
 project(PackageTest C)
 
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
+conan_basic_setup(TARGETS)
 
 if (UNIX)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra")
@@ -14,9 +14,7 @@ if (UNIX)
     endif ()
 endif ()
 
-find_package(EXPAT REQUIRED)
+#find_package(EXPAT REQUIRED)
 
 add_executable(example example.c)
-target_link_libraries(example PRIVATE ${EXPAT_LIBRARY})
-target_include_directories(example PRIVATE ${EXPAT_INCLUDE_DIRS})
-target_compile_definitions(example PRIVATE "-DXML_STATIC")
+target_link_libraries(example PRIVATE CONAN_PKG::Expat)
